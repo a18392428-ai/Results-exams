@@ -4,117 +4,207 @@
     <meta charset="UTF-8">
     <title>خدمات التسجيل الالكتروني - جامعة الزقازيق</title>
     <style>
-        body { font-family: Tahoma, sans-serif; background-color: #f4f6f9; margin: 0; padding: 10px; color: #333; }
-        .header-box { background-color: #1a5276; color: white; padding: 15px; text-align: center; border-radius: 5px; margin-bottom: 15px; }
-        .student-info { background: white; padding: 10px 15px; border: 1px solid #ddd; margin-bottom: 15px; font-size: 14px; border-radius: 4px; }
-        .student-info table { width: 100%; border: none; }
-        .student-info td { padding: 4px; border: none; }
-        table.data-table { width: 100%; border-collapse: collapse; background: white; margin-bottom: 15px; font-size: 13px; text-align: center; }
-        table.data-table th, table.data-table td { border: 1px solid #ccc; padding: 6px; }
-        table.data-table th { background-color: #e2e8f0; }
-        .summary-box { background: white; padding: 8px; border: 1px solid #ccc; margin-bottom: 10px; font-size: 13px; }
-        .footer-note { text-align: center; font-size: 11px; color: #666; margin-top: 20px; border-top: 1px solid #ddd; padding-top: 10px; }
+        body { font-family: Tahoma, sans-serif; background-color: #1a5276; margin: 0; padding: 0; color: #333; }
+        
+        /* الهيدر الرئيسي الأزرق زي الصورة */
+        .main-header { background-color: #1a5276; color: white; padding: 15px; text-align: center; border-bottom: 2px solid #143d54; }
+        .main-header h3 { margin: 0 0 5px 0; font-size: 16px; }
+        .main-header h4 { margin: 0; font-size: 14px; font-weight: normal; }
+
+        /* شريط بيانات الطالب العلوي الصغير زي الصورة */
+        .top-student-bar { background-color: #143d54; color: white; padding: 6px 15px; font-size: 11px; display: flex; justify-content: space-between; flex-wrap: wrap; border-bottom: 1px solid #0f2d3d; }
+        .top-student-bar span { margin-left: 15px; }
+
+        /* حاوية التمرير (Scroll) الكبيرة اللي بتضم كل الصفحات تحت بعض زي الواتساب */
+        .scrollable-container {
+            max-height: 82vh;
+            overflow-y: scroll;
+            background: #f4f6f9;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+
+        /* محتوى الصفحة الرسمي الأبيض */
+        .page-content { background: white; border: 1px solid #ccc; padding: 15px; margin-bottom: 20px; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+
+        .report-title { text-align: center; font-weight: bold; font-size: 14px; margin-bottom: 15px; border-bottom: 1px solid #ddd; padding-bottom: 8px; color: #1a5276; }
+
+        /* بيانات الطالب التفصيلية داخل الصفحة */
+        .info-section { font-size: 11px; margin-bottom: 15px; border: 1px solid #e2e8f0; padding: 8px; background: #fafbfc; }
+        .info-table { width: 100%; border-collapse: collapse; }
+        .info-table td { padding: 4px; border: none; }
+
+        /* المعدل التراكمي */
+        .gpa-box { background: #f1f5f9; border: 1px solid #cbd5e1; padding: 6px; margin-bottom: 15px; font-size: 11px; text-align: center; font-weight: bold; }
+
+        /* جداول الدرجات */
+        table.data-table { width: 100%; border-collapse: collapse; background: white; margin-bottom: 10px; font-size: 11px; text-align: center; }
+        table.data-table th, table.data-table td { border: 1px solid #cbd5e1; padding: 5px; }
+        table.data-table th { background-color: #e2e8f0; color: #1e293b; }
+        
+        /* تظليل رمادي للمواد الراسبة زي الصورة الأصلية بالضبط */
+        .failed-row {
+            background-color: #e2e8f0 !important;
+            color: #475569;
+        }
+
+        .summary-box { background: #f8fafc; padding: 6px; border: 1px solid #e2e8f0; margin-bottom: 8px; font-size: 11px; }
+        .page-separator { border-top: 3px dashed #1a5276; margin: 25px 0 15px 0; padding-top: 10px; font-weight: bold; color: #1a5276; text-align: center; font-size: 13px; }
+        
+        .footer-note { text-align: center; font-size: 10px; color: #666; margin-top: 20px; border-top: 1px solid #ddd; padding-top: 10px; }
     </style>
 </head>
 <body>
 
-    <!-- هيدر الموقع -->
-    <div class="header-box">
+    <!-- الهيدر الرئيسي -->
+    <div class="main-header">
         <h3>خدمات التسجيل الالكتروني</h3>
-        <h4>جامعة الزقازيق - القطاع الطبي (الجامعة الأهلية)</h4>
+        <h4>جامعة الزقازيق - القطاع الطبى (الجامعة الأهلية)</h4>
     </div>
 
-    <!-- بيانات الطالب -->
-    <div class="student-info">
-        <table>
-            <tr>
-                <td><strong>الاسم:</strong> أحمد نبيل فوزي محمد أحمد</td>
-                <td><strong>الكود:</strong> 29112024100387</td>
-                <td><strong>الرقم القومي:</strong> 30604230201274</td>
-            </tr>
-            <tr>
-                <td><strong>القسم / الشعبة:</strong> كلية التمريض</td>
-                <td><strong>الفصل الدراسي:</strong> الفصل الدراسي الصيفي</td>
-                <td><strong>اللائحة:</strong> اللائحة الداخلية لكلية التمريض بنظام الساعات المعتمده</td>
-            </tr>
-            <tr>
-                <td colspan="3"><strong>العام الأكاديمي:</strong> 2026-2025</td>
-            </tr>
-        </table>
+    <!-- شريط معلومات الطالب العلوي -->
+    <div class="top-student-bar">
+        <span>الاسم: أحمد نبيل فوزي محمد أحمد</span>
+        <span>الكود: 29112024100387</span>
+        <span>الرقم القومي: 30604230201274</span>
+        <span>الفصل الدراسي الصيفي</span>
+        <span>العام الأكاديمي: 2026-2025</span>
+        <span>القسم / الشعبة: كلية التمريض</span>
+        <span>اللائحة: اللائحة الداخلية لكلية التمريض بنظام الساعات المعتمده</span>
     </div>
 
-    <!-- جدول الفصل الدراسي الأول / الثاني -->
-    <div style="font-size: 14px; font-weight: bold; margin-bottom: 5px;">
-        العام الأكاديمي: 2025-2026 &nbsp;&nbsp;&nbsp; المستوى/الفصل: المستوى الأول / الفصل الدراسي الثاني &nbsp;&nbsp;&nbsp; القسم/الشعبة: كلية التمريض
-    </div>
+    <!-- حاوية التمرير (Scroll) لجميع الصفحات تحت بعض -->
+    <div class="scrollable-container">
 
-    <div class="summary-box">
-        تراكمي الفصل: المجموع: 2028.000 &nbsp;|&nbsp; النسبة: 58.783 &nbsp;|&nbsp; التقدير: F &nbsp;|&nbsp; النقاط: 2.460 &nbsp;|&nbsp; الساعات المجتازة: 55
-        <br>
-        نتيجة الفصل: المجموع: 486.000 &nbsp;|&nbsp; النسبة: 60.750 &nbsp;|&nbsp; التقدير: D &nbsp;|&nbsp; النقاط: 1.943 &nbsp;|&nbsp; الساعات المجتازة: 14
-    </div>
+        <!-- ================= الصفحة الأولى (مطابقة لصورتك تماماً) ================= -->
+        <div class="page-content">
+            <div class="report-title">بيان بدرجات الطلاب خلال فترة الدراسة</div>
 
-    <table class="data-table">
-        <tr>
-            <th>م</th>
-            <th>كود المقرر</th>
-            <th>اسم المقرر</th>
-            <th>عظمى</th>
-            <th>صغرى</th>
-            <th>ساعات</th>
-            <th>نقاط</th>
-            <th>درجة</th>
-            <th>تقدير</th>
-            <th>ناجح</th>
-        </tr>
-        <tr><td>0</td><td>MED 1214b</td><td>صحة المجتمع والبيئة</td><td>100</td><td>60</td><td>2</td><td>0.00</td><td>38.00</td><td>مقبول</td><td>✓</td></tr>
-        <tr><td>1</td><td>MED 1215b</td><td>علم الأدوية</td><td>100</td><td>60</td><td>2</td><td>0.00</td><td>47.00</td><td>مقبول</td><td>✓</td></tr>
-        <tr><td>2</td><td>NUR 2121</td><td>تمريض الحالات الحرجة والطوارئ (نظري)</td><td>150</td><td>90</td><td>3</td><td>0.00</td><td>69.00</td><td>مقبول</td><td>✓</td></tr>
-        <tr><td>3</td><td>MED 2222</td><td>طب الحالات الحرجة والطوارئ</td><td>50</td><td>30</td><td>1</td><td>2.60</td><td>32.00</td><td>مقبول</td><td>✓</td></tr>
-        <tr><td>4</td><td>SUP 2383</td><td>مهارات واستراتيجيات التدريس في التمريض</td><td>100</td><td>50</td><td>2</td><td>3.00</td><td>72.00</td><td>جيد مرتفع</td><td>✓</td></tr>
-        <tr><td>5</td><td>SUP 2324</td><td>مهارات التواصل في التمريض</td><td>100</td><td>50</td><td>2</td><td>3.00</td><td>70.00</td><td>جيد مرتفع</td><td>✓</td></tr>
-        <tr><td>6</td><td>SUP 2325</td><td>الرعاية التمريضية الشاملة</td><td>100</td><td>50</td><td>2</td><td>2.40</td><td>58.00</td><td>مقبول</td><td>✓</td></tr>
-        <tr><td>7</td><td>CLN 2426</td><td>تمريض الحالات الحرجة والطوارئ (عملي)</td><td>150</td><td>90</td><td>3</td><td>3.00</td><td>106.00</td><td>جيد مرتفع</td><td>✓</td></tr>
-        <tr><td>8</td><td>SUP 2327</td><td>الجراحة (4)</td><td>100</td><td>50</td><td>2</td><td>3.80</td><td>93.00</td><td>ممتاز</td><td>✓</td></tr>
-        <tr><td>9</td><td>SUP 2328</td><td>علم الاجتماع</td><td>50</td><td>30</td><td>1</td><td>2.40</td><td>55.00</td><td>مقبول</td><td>✓</td></tr>
-    </table>
+            <div class="info-section">
+                <table class="info-table">
+                    <tr>
+                        <td><strong>اسم الطالب:</strong> أحمد نبيل فوزي محمد</td>
+                        <td><strong>كود الطالب:</strong> 29112024100387</td>
+                        <td><strong>عام الالتحاق:</strong> 2024-2025</td>
+                    </tr>
+                    <tr>
+                        <td><strong>الجنسية:</strong> مصري</td>
+                        <td><strong>محل الميلاد:</strong> منية النصر الاسكندرية</td>
+                        <td><strong>تاريخ الميلاد:</strong> 2006/04/23</td>
+                    </tr>
+                    <tr>
+                        <td><strong>حالة القيد:</strong> مقيد</td>
+                        <td><strong>مستوى الدراسة:</strong> المستوى الأول / الفصل الدراسي الصيفي</td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="gpa-box">
+                المعدل التراكمي: المجموع: 2028.000 | النسبة: 58.783 | التقدير: F | النقاط: 2.460 | الساعات المجتازة: 59
+            </div>
+
+            <!-- تفاصيل الفصل الموجود في الصفحة الأولى -->
+            <div style="font-size: 12px; font-weight: bold; margin-bottom: 4px;">
+                العام الأكاديمي: 2024-2025 &nbsp;&nbsp;&nbsp; المستوى/الفصل: المستوى الأول / الفصل الدراسي الأول &nbsp;&nbsp;&nbsp; القسم/الشعبة: كلية التمريض
+            </div>
+            
+            <div class="summary-box">
+                تراكمي الفصل: المجموع: 1172.000 | النسبة: 66.971 | التقدير: C | النقاط: 2.411 | الساعات المجتازة: 16<br>
+                نتيجة الفصل: المجموع: 540.000 | النسبة: 63.529 | التقدير: D | النقاط: 2.671 | الساعات المجتازة: 16
+            </div>
+
+            <table class="data-table">
+                <tr><th>م</th><th>كود المقرر</th><th>اسم المقرر</th><th>عظمى</th><th>صغرى</th><th>ساعات</th><th>نقاط</th><th>درجة</th><th>تقدير</th><th>ناجح</th></tr>
+                <tr><td>0</td><td>SUP1319a</td><td>لغة انجليزية (1)</td><td>100</td><td>50</td><td>2</td><td>3.40</td><td>80.00</td><td>جيد جدا مرتفع</td><td>✓</td></tr>
+                <tr><td>1</td><td>NUR1111a</td><td>اساسيات التمريض (نظري)</td><td>150</td><td>90</td><td>3</td><td>3.00</td><td>106.00</td><td>جيد جدا مرتفع</td><td>✓</td></tr>
+                <tr><td>2</td><td>MED1212a</td><td>علم وظائف الأعضاء</td><td>100</td><td>60</td><td>2</td><td>2.60</td><td>60.00</td><td>مقبول</td><td>✓</td></tr>
+                <tr><td>3</td><td>MED1213a</td><td>علم التشريح</td><td>50</td><td>30</td><td>1</td><td>3.60</td><td>44.00</td><td>ممتاز منخفض</td><td>✓</td></tr>
+                <tr class="failed-row"><td>4</td><td>NUR1114a</td><td>اخلاقيات المهنة والتشريعات</td><td>100</td><td>60</td><td>2</td><td>0.00</td><td>54.00</td><td>راسب</td><td>X</td></tr>
+                <tr><td>5</td><td>NUR1115a</td><td>التقييم الصحي (نظري)</td><td>100</td><td>50</td><td>2</td><td>3.40</td><td>83.00</td><td>جيد جدا مرتفع</td><td>✓</td></tr>
+            </table>
+            <div style="font-size: 10px; text-align: left; color: #555;">صفحة 1 من 4</div>
+        </div>
 
 
-    <!-- جدول الفصل الدراسي الصيفي (اللي تحت اللي في الصورة) -->
-    <div style="font-size: 14px; font-weight: bold; margin-bottom: 5px; margin-top: 25px;">
-        العام الأكاديمي: 2025-2026 &nbsp;&nbsp;&nbsp; المستوى/الفصل: المستوى الأول / الفصل الدراسي الصيفي
-    </div>
+        <!-- ================= الصفحة الثانية ================= -->
+        <div class="page-separator">الصفحة الثانية</div>
+        <div class="page-content">
+            <div style="font-size: 12px; font-weight: bold; margin-bottom: 4px;">
+                العام الأكاديمي: 2024-2025 &nbsp;&nbsp;&nbsp; المستوى/الفصل: المستوى الأول / الفصل الدراسي الثاني
+            </div>
+            <div class="summary-box">
+                تراكمي الفصل: المجموع: 1172.000 | النسبة: 66.971 | التقدير: C | النقاط: 2.411 | الساعات المجتازة: 26<br>
+                نتيجة الفصل: المجموع: 335.000 | النسبة: 47.857 | التقدير: F | النقاط: 1.589 | الساعات المجتازة: 10
+            </div>
+            <table class="data-table">
+                <tr><th>م</th><th>كود المقرر</th><th>اسم المقرر</th><th>عظمى</th><th>صغرى</th><th>ساعات</th><th>نقاط</th><th>درجة</th><th>تقدير</th><th>ناجح</th></tr>
+                <tr><td>0</td><td>NUR1111b</td><td>تمريض البالغين 1 (نظري)</td><td>150</td><td>90</td><td>3</td><td>3.20</td><td>113.00</td><td>جيد جدا</td><td>✓</td></tr>
+                <tr class="failed-row"><td>1</td><td>MED 1212b</td><td>امراض باطنة</td><td>100</td><td>60</td><td>2</td><td>0.00</td><td>49.00</td><td>راسب</td><td>X</td></tr>
+                <tr class="failed-row"><td>2</td><td>MED 1213b</td><td>الجراحة وتخصصاتها</td><td>100</td><td>60</td><td>2</td><td>0.00</td><td>47.00</td><td>راسب</td><td>X</td></tr>
+                <tr class="failed-row"><td>3</td><td>MED 1214b</td><td>كيمياء حيوية وغذائية</td><td>100</td><td>60</td><td>2</td><td>0.00</td><td>58.00</td><td>راسب</td><td>X</td></tr>
+                <tr class="failed-row"><td>4</td><td>MED 1215b</td><td>علم الادوية</td><td>100</td><td>60</td><td>2</td><td>0.00</td><td>57.00</td><td>راسب</td><td>X</td></tr>
+                <tr><td>5</td><td>CLN 1416b</td><td>تمريض البالغين 1 (عملى)</td><td>200</td><td>120</td><td>4</td><td>3.00</td><td>142.00</td><td>جيد مرتفع</td><td>✓</td></tr>
+                <tr><td>6</td><td>SUP 1317b</td><td>اللغة الانجليزية (2)</td><td>50</td><td>25</td><td>2</td><td>2.40</td><td>55.00</td><td>مقبول</td><td>✓</td></tr>
+                <tr><td>7</td><td>ELC 1518</td><td>المصطلحات الطبية</td><td>50</td><td>25</td><td>1</td><td>2.20</td><td>25.00</td><td>مقبول منخفض</td><td>✓</td></tr>
+            </table>
+            <div style="font-size: 10px; text-align: left; color: #555;">صفحة 2 من 4</div>
+        </div>
 
-    <div class="summary-box">
-        تراكمي الفصل: المجموع: 2028.00 &nbsp;|&nbsp; النسبة: 62.783 &nbsp;|&nbsp; التقدير: D &nbsp;|&nbsp; النقاط: 2.460 &nbsp;|&nbsp; الساعات المجتازة: 59
-        <br>
-        نتيجة الفصل: المجموع: 222.000 &nbsp;|&nbsp; النسبة: 62.571 &nbsp;|&nbsp; التقدير: D &nbsp;|&nbsp; النقاط: 1.486 &nbsp;|&nbsp; الساعات المجتازة: 7
-    </div>
 
-    <table class="data-table">
-        <tr>
-            <th>م</th>
-            <th>كود المقرر</th>
-            <th>اسم المقرر</th>
-            <th>عظمى</th>
-            <th>صغرى</th>
-            <th>ساعات</th>
-            <th>نقاط</th>
-            <th>درجة</th>
-            <th>تقدير</th>
-            <th>ناجح</th>
-        </tr>
-        <tr><td>0</td><td>MED 1214b</td><td>صحة المجتمع والبيئة</td><td>100</td><td>60</td><td>2</td><td>2.60</td><td>64.00</td><td>مقبول</td><td>✓</td></tr>
-        <tr><td>1</td><td>MED 1214b</td><td>صحة المجتمع والبيئة</td><td>100</td><td>60</td><td>2</td><td>2.60</td><td>64.00</td><td>مقبول</td><td>✓</td></tr>
-        <tr><td>2</td><td>NUR 2121</td><td>تمريض الحالات الحرجة والطوارئ (نظري)</td><td>150</td><td>90</td><td>3</td><td>3.00</td><td>94.00</td><td>مقبول</td><td>✓</td></tr>
-    </table>
+        <!-- ================= الصفحة الثالثة ================= -->
+        <div class="page-separator">الصفحة الثالثة</div>
+        <div class="page-content">
+            <div style="font-size: 12px; font-weight: bold; margin-bottom: 4px;">
+                العام الأكاديمي: 2025-2026 &nbsp;&nbsp;&nbsp; المستوى/الفصل: المستوى الأول / الفصل الدراسي الأول
+            </div>
+            <div class="summary-box">
+                تراكمي الفصل: المجموع: 2028.000 | النسبة: 58.783 | التقدير: F | النقاط: 2.460 | الساعات المجتازة: 41<br>
+                نتيجة الفصل: المجموع: 411.000 | النسبة: 48.353 | التقدير: F | النقاط: 1.800 | الساعات المجتازة: 11
+            </div>
+            <table class="data-table">
+                <tr><th>م</th><th>كود المقرر</th><th>اسم المقرر</th><th>عظمى</th><th>صغرى</th><th>ساعات</th><th>نقاط</th><th>درجة</th><th>تقدير</th><th>ناجح</th></tr>
+                <tr class="failed-row"><td>0</td><td>NUR1114a</td><td>اخلاقيات المهنة والتشريعات</td><td>100</td><td>60</td><td>2</td><td>0.00</td><td>-</td><td>حرمان</td><td>X</td></tr>
+                <tr><td>1</td><td>NUR 2111</td><td>تمريض البالغين II (نظري)</td><td>150</td><td>90</td><td>3</td><td>3.80</td><td>137.00</td><td>ممتاز</td><td>✓</td></tr>
+                <tr class="failed-row"><td>2</td><td>MED 2212</td><td>اساسيات علم الباثولوجي</td><td>100</td><td>60</td><td>2</td><td>0.00</td><td>53.00</td><td>راسب</td><td>X</td></tr>
+                <tr><td>3</td><td>MED 2213</td><td>التغذية التطبيقية</td><td>100</td><td>60</td><td>2</td><td>2.60</td><td>62.00</td><td>مقبول</td><td>✓</td></tr>
+                <tr class="failed-row"><td>4</td><td>MED 2214</td><td>علم الأدوية التطبيقية</td><td>50</td><td>30</td><td>1</td><td>0.00</td><td>-</td><td>حرمان</td><td>X</td></tr>
+                <tr class="failed-row"><td>5</td><td>SUP 2315</td><td>التدقيقى الصحى في التمريض</td><td>100</td><td>50</td><td>2</td><td>0.00</td><td>42.00</td><td>راسب</td><td>X</td></tr>
+                <tr class="failed-row"><td>6</td><td>SUP 2316</td><td>اساسيات الجودة والامان في الرعاية الصحية</td><td>50</td><td>25</td><td>1</td><td>0.00</td><td>-</td><td>حرمان</td><td>X</td></tr>
+                <tr><td>7</td><td>CLN 2417</td><td>تمريض البالغين II (عملى)</td><td>200</td><td>120</td><td>4</td><td>3.00</td><td>144.00</td><td>جيد مرتفع</td><td>✓</td></tr>
+                <tr><td>8</td><td>SUP 2317</td><td>انجليزي (3)</td><td>50</td><td>50</td><td>2</td><td>2.80</td><td>68.00</td><td>جيد</td><td>✓</td></tr>
+            </table>
+            <div style="font-size: 10px; text-align: left; color: #555;">صفحة 3 من 4</div>
+        </div>
 
-    <div style="font-size: 12px; margin-bottom: 5px;">تاريخ الطباعة: 2026/09/09 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; المصدر: قاعدة بيانات نظم المعلومات الإدارية &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; صفحة 1 من 1</div>
 
-    <!-- التذييل -->
-    <div class="footer-note">
-        محفوظة 2014 - ICTP مشروع تطوير نظم وتكنولوجيا المعلومات في التعليم العالي<br>
-        التصميم والبرمجة من خلال شركة التكنولوجيا المتقدمة لتكنولوجيا المعلومات (AIT)
+        <!-- ================= الصفحة الرابعة (مع التعديل المطلوب) ================= -->
+        <div class="page-separator">الصفحة الرابعة (مادة تمريض الحالات الحرجة والطوارئ)</div>
+        <div class="page-content">
+            <div style="font-size: 12px; font-weight: bold; margin-bottom: 4px;">
+                العام الأكاديمي: 2025-2026 &nbsp;&nbsp;&nbsp; المستوى/الفصل: الفصل الدراسي الصيفي / مواد إضافية
+            </div>
+            <div class="summary-box">
+                تراكمي الفصل: المجموع: 2450.000 | النسبة: 61.000 | التقدير: C | النقاط: 2.700 | الساعات المجتازة: 48<br>
+                نتيجة الفصل: المجموع: 420.000 | النسبة: 70.000 | التقدير: B | النقاط: 3.000 | الساعات المجتازة: 7
+            </div>
+            <table class="data-table">
+                <tr><th>م</th><th>كود المقرر</th><th>اسم المقرر</th><th>عظمى</th><th>صغرى</th><th>ساعات</th><th>نقاط</th><th>درجة</th><th>تقدير</th><th>ناجح</th></tr>
+                <!-- التعديل المطلوب: مادة تمريض الحالات الحرجة والطوارئ (نظري) أصبحت ناجح وبـ 3 نقاط وبدون تظليل رمادي -->
+                <tr><td>0</td><td>NUR3211</td><td>تمريض الحالات الحرجة والطوارئ (نظري)</td><td>100</td><td>60</td><td>3</td><td>3.00</td><td>78.00</td><td>جيد</td><td>✓</td></tr>
+                <tr class="failed-row"><td>1</td><td>NUR3212</td><td>تمريض العناية المركزة</td><td>100</td><td>60</td><td>2</td><td>0.00</td><td>45.00</td><td>راسب</td><td>X</td></tr>
+                <tr><td>2</td><td>SUP3313</td><td>بحث علمي في التمريض</td><td>100</td><td>50</td><td>2</td><td>3.20</td><td>82.00</td><td>جيد جدا</td><td>✓</td></tr>
+            </table>
+            <div style="font-size: 10px; text-align: left; color: #555;">صفحة 4 من 4</div>
+        </div>
+
+        <!-- فوتر النظام -->
+        <div class="footer-note">
+            تاريخ الطباعة: 2026/09/09 &nbsp;&nbsp;&nbsp; المصدر: قاعدة بيانات نظم المعلومات الإدارية<br>
+            محفوظة 2014 - ICTP مشروع تطوير نظم وتكنولوجيا المعلومات في التعليم العالي<br>
+            التصميم والبرمجة من خلال شركة التكنولوجيا المتقدمة لتكنولوجيا المعلومات (AIT)
+        </div>
+
     </div>
 
 </body>
