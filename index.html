@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>تسجيل الدخول - خدمات التسجيل الالكتروني</title>
+    <title>خدمات التسجيل الالكتروني - جامعة الزقازيق</title>
     <style>
         body { font-family: Tahoma, sans-serif; background-color: #f4f6f9; margin: 0; padding: 0; }
         .header-box { background-color: #1a5276; color: white; padding: 15px; text-align: center; }
@@ -50,21 +50,19 @@
 
     <script>
         function checkLogin(event) {
-            // منع الصفحة من إعادة التحميل
             event.preventDefault();
 
-            // حط هنا الكود وكلمة السر اللي إنت عايزهم (مثلاً الكود: 123 والسر: 456)
-            const correctCode = "123";
-            const correctPass = "456";
+            // تقدر تغير الكود وكلمة السر هنا زي ما تحب
+            const correctCode = "29112024100387";
+            const correctPass = "30604230201274";
 
             const enteredCode = document.getElementById("studentCode").value;
             const enteredPass = document.getElementById("studentPass").value;
 
             if (enteredCode === correctCode && enteredPass === correctPass) {
-                // لو البيانات صح، انقله لصفحة الشهادة (اللي عملناها الخطوة اللي فاتت وسميها certificate.html مثلاً)
-                window.location.href = "index.html";
+                // ينقله لصفحة الشهادة لما البيانات تكون صح
+                window.location.href = "certificate.html";
             } else {
-                // لو خطأ، اعرض رسالة خطأ
                 document.getElementById("errorMsg").innerText = "كود الطالب أو كلمة المرور غير صحيحة!";
             }
         }
