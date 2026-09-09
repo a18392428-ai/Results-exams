@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>تسجيل الدخول - خدمات التسجيل الالكتروني</title>
+    <style>
+        body { font-family: Tahoma, sans-serif; background-color: #f4f6f9; margin: 0; padding: 0; }
+        .header-box { background-color: #1a5276; color: white; padding: 15px; text-align: center; }
+        .login-container { width: 350px; background: white; margin: 40px auto; padding: 20px; border: 1px solid #b0c4de; border-radius: 5px; box-shadow: 0px 0px 10px rgba(0,0,0,0.1); }
+        .login-container h3 { text-align: center; color: #1a5276; border-bottom: 2px solid #1a5276; padding-bottom: 8px; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-size: 13px; color: #333; }
+        .form-group input { width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 3px; }
+        .login-btn { background-color: #2e86c1; color: white; border: none; padding: 10px; width: 100%; border-radius: 3px; font-size: 14px; cursor: pointer; }
+        .login-btn:hover { background-color: #1b4f72; }
+        .error-msg { color: red; text-align: center; font-size: 12px; margin-top: 10px; }
+        .footer-note { text-align: center; font-size: 11px; color: #666; margin-top: 40px; border-top: 1px solid #ddd; padding-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <!-- هيدر الموقع -->
+    <div class="header-box">
+        <h3>خدمات التسجيل الالكتروني</h3>
+        <h4>جامعة الزقازيق - القطاع الطبي (الجامعة الأهلية)</h4>
+    </div>
+
+    <!-- صندوق تسجيل الدخول -->
+    <div class="login-container">
+        <h3>بيانات الدخول</h3>
+        <form id="loginForm" onsubmit="checkLogin(event)">
+            <div class="form-group">
+                <label>كود الطالب:</label>
+                <input type="text" id="studentCode" placeholder="أدخل كود الطالب" required>
+            </div>
+            <div class="form-group">
+                <label>كلمة السر (الرقم القومي):</label>
+                <input type="password" id="studentPass" placeholder="أدخل كلمة المرور" required>
+            </div>
+            <button type="submit" class="login-btn">تسجيل دخول</button>
+            <div id="errorMsg" class="error-msg"></div>
+        </form>
+    </div>
+
+    <!-- التذييل -->
+    <div class="footer-note">
+        محفوظة 2014 - ICTP مشروع تطوير نظم وتكنولوجيا المعلومات في التعليم العالي<br>
+        التصميم والبرمجة من خلال شركة التكنولوجيا المتقدمة لتكنولوجيا المعلومات (AIT)
+    </div>
+
+    <script>
+        function checkLogin(event) {
+            // منع الصفحة من إعادة التحميل
+            event.preventDefault();
+
+            // حط هنا الكود وكلمة السر اللي إنت عايزهم (مثلاً الكود: 123 والسر: 456)
+            const correctCode = "123";
+            const correctPass = "456";
+
+            const enteredCode = document.getElementById("studentCode").value;
+            const enteredPass = document.getElementById("studentPass").value;
+
+            if (enteredCode === correctCode && enteredPass === correctPass) {
+                // لو البيانات صح، انقله لصفحة الشهادة (اللي عملناها الخطوة اللي فاتت وسميها certificate.html مثلاً)
+                window.location.href = "index.html";
+            } else {
+                // لو خطأ، اعرض رسالة خطأ
+                document.getElementById("errorMsg").innerText = "كود الطالب أو كلمة المرور غير صحيحة!";
+            }
+        }
+    </script>
+
+</body>
+</html>
